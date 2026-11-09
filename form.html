@@ -109,23 +109,13 @@
         .btn-submit:hover {
             background-color: #5e35b1;
         }
-        .success-msg {
-            display: none;
-            background-color: #e6f4ea;
-            color: #137333;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 12px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 16px;
-        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <form id="jobApplicationForm">
+    <!-- تم إضافة action الخاص بـ Formspree و method="POST" -->
+    <form id="jobApplicationForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <!-- رأس الاستبيان -->
         <div class="form-header">
             <h1>طلب توظيف مشفى أريحا المركزي</h1>
@@ -136,65 +126,65 @@
         <!-- 1. الاسم الثلاثي -->
         <div class="question-card">
             <div class="question-title">الاسم الثلاثي <span>*</span></div>
-            <input type="text" name="fullName" required placeholder="إجابتك">
+            <input type="text" name="الاسم الثلاثي" required placeholder="إجابتك">
         </div>
 
         <!-- 2. اسم الأم -->
         <div class="question-card">
             <div class="question-title">اسم الأم <span>*</span></div>
-            <input type="text" name="motherName" required placeholder="إجابتك">
+            <input type="text" name="اسم الأم" required placeholder="إجابتك">
         </div>
 
         <!-- 3. مكان الولادة -->
         <div class="question-card">
             <div class="question-title">مكان الولادة ( اسم القرية أو البلدة أو المدينة ) <span>*</span></div>
-            <input type="text" name="birthPlace" required placeholder="إجابتك">
+            <input type="text" name="مكان الولادة" required placeholder="إجابتك">
         </div>
 
         <!-- 4. تاريخ الولادة -->
         <div class="question-card">
             <div class="question-title">تاريخ الولادة <span>*</span></div>
-            <input type="date" name="birthDate" required>
+            <input type="date" name="تاريخ الولادة" required>
         </div>
 
         <!-- 5. الرقم الوطني -->
         <div class="question-card">
             <div class="question-title">الرقم الوطني <span>*</span></div>
-            <input type="text" name="nationalId" required placeholder="إجابتك">
+            <input type="text" name="الرقم الوطني" required placeholder="إجابتك">
         </div>
 
         <!-- 6. اسم محافظتي -->
         <div class="question-card">
             <div class="question-title">اسم محافظتي <span>*</span></div>
-            <input type="text" name="governorate" required placeholder="إجابتك">
+            <input type="text" name="المحافظة" required placeholder="إجابتك">
         </div>
 
         <!-- 7. المؤهل العلمي -->
         <div class="question-card">
             <div class="question-title">المؤهل العلمي <span>*</span></div>
             <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="education" value="دكتوراه" required> دكتوراه</label>
-                <label class="radio-option"><input type="radio" name="education" value="ماجستير"> ماجستير</label>
-                <label class="radio-option"><input type="radio" name="education" value="جامعة"> جامعة</label>
-                <label class="radio-option"><input type="radio" name="education" value="معهد"> معهد</label>
-                <label class="radio-option"><input type="radio" name="education" value="مدرسة تمريض"> مدرسة تمريض</label>
-                <label class="radio-option"><input type="radio" name="education" value="ثالث ثانوي"> ثالث ثانوي</label>
-                <label class="radio-option"><input type="radio" name="education" value="دبلوم / أخرى"> دبلوم / أخرى</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="دكتوراه" required> دكتوراه</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="ماجستير"> ماجستير</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="جامعة"> جامعة</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="معهد"> معهد</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="مدرسة تمريض"> مدرسة تمريض</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="ثالث ثانوي"> ثالث ثانوي</label>
+                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="دبلوم / أخرى"> دبلوم / أخرى</label>
             </div>
         </div>
 
         <!-- 8. الاختصاص -->
         <div class="question-card">
             <div class="question-title">الاختصاص ( في حال ليس هنا إختصاص اكتب لا يوجد ) <span>*</span></div>
-            <input type="text" name="specialization" required placeholder="إجابتك">
+            <input type="text" name="الاختصاص" required placeholder="إجابتك">
         </div>
 
         <!-- 9. سؤال للأطباء فقط -->
         <div class="question-card">
             <div class="question-title">سؤال للأطباء فقط هل لديك رخصة مزاولة؟</div>
             <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="license" value="نعم"> نعم</label>
-                <label class="radio-option"><input type="radio" name="license" value="لا"> لا</label>
+                <label class="radio-option"><input type="radio" name="رخصة المزاولة" value="نعم"> نعم</label>
+                <label class="radio-option"><input type="radio" name="رخصة المزاولة" value="لا"> لا</label>
             </div>
         </div>
 
@@ -202,54 +192,54 @@
         <div class="question-card">
             <div class="question-title">هل انت مرتبط بعمل اخر <span>*</span></div>
             <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="otherJob" value="نعم" required> نعم</label>
-                <label class="radio-option"><input type="radio" name="otherJob" value="لا"> لا</label>
+                <label class="radio-option"><input type="radio" name="مرتبط بعمل آخر" value="نعم" required> نعم</label>
+                <label class="radio-option"><input type="radio" name="مرتبط بعمل آخر" value="لا"> لا</label>
             </div>
         </div>
 
         <!-- 11. اذكر العمل -->
         <div class="question-card">
             <div class="question-title">اذكر العمل <span>*</span></div>
-            <input type="text" name="currentWorkDesc" required placeholder="إجابتك">
+            <input type="text" name="تفاصيل العمل الحالي" required placeholder="إجابتك">
         </div>
 
         <!-- 12. هل انت مستعد للإلتحاق معنا -->
         <div class="question-card">
             <div class="question-title">هل انت مستعد للإلتحاق معنا <span>*</span></div>
             <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="readyToJoin" value="نعم" required> نعم</label>
-                <label class="radio-option"><input type="radio" name="readyToJoin" value="لا"> لا</label>
+                <label class="radio-option"><input type="radio" name="مستعد للإلتحاق" value="نعم" required> نعم</label>
+                <label class="radio-option"><input type="radio" name="مستعد للإلتحاق" value="لا"> لا</label>
             </div>
         </div>
 
         <!-- 13. التاريخ المتوقع للإلتحاق معنا -->
         <div class="question-card">
             <div class="question-title">التاريخ المتوقع للإلتحاق معنا <span>*</span></div>
-            <input type="date" name="expectedDate" required>
+            <input type="date" name="تاريخ الإلتحاق المتوقع" required>
         </div>
 
         <!-- 14. التوصيف الوظيفي السابق -->
         <div class="question-card">
             <div class="question-title">التوصيف الوظيفي السابق ( في حال كان غير موجود اكتب لا يوجد ) <span>*</span></div>
-            <input type="text" name="prevJob" required placeholder="إجابتك">
+            <input type="text" name="التوصيف الوظيفي السابق" required placeholder="إجابتك">
         </div>
 
         <!-- 15. التوصيف الوظيفي المرشح اليه للعمل معنا -->
         <div class="question-card">
             <div class="question-title">التوصيف الوظيفي المرشح اليه للعمل معنا <span>*</span></div>
-            <input type="text" name="targetJob" required placeholder="إجابتك">
+            <input type="text" name="التوصيف الوظيفي المرشح له" required placeholder="إجابتك">
         </div>
 
         <!-- 16. رقم الهاتف -->
         <div class="question-card">
             <div class="question-title">رقم الهاتف <span>*</span></div>
-            <input type="text" name="phone" required placeholder="إجابتك">
+            <input type="text" name="رقم الهاتف" required placeholder="إجابتك">
         </div>
 
         <!-- 17. البريد الإلكتروني -->
         <div class="question-card">
             <div class="question-title">البريد الإلكتروني <span>*</span></div>
-            <input type="email" name="email" required placeholder="إجابتك">
+            <input type="email" name="_replyto" required placeholder="إجابتك">
         </div>
 
         <!-- زر الإرسال -->
@@ -258,48 +248,7 @@
             <button type="reset" style="background:none; border:none; color:#5f6368; cursor:pointer; font-weight:600;">محو النموذج</button>
         </div>
     </form>
-
-    <div id="successMessage" class="success-msg">
-        تم إرسال طلبك بنجاح وحفظه على الجهاز! شكراً لتعبئة الاستمارة.
-    </div>
 </div>
-
-<script>
-    document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // جمع كافة البيانات المدخلة
-        const formData = {
-            fullName: document.querySelector('input[name="fullName"]').value,
-            motherName: document.querySelector('input[name="motherName"]').value,
-            birthPlace: document.querySelector('input[name="birthPlace"]').value,
-            birthDate: document.querySelector('input[name="birthDate"]').value,
-            nationalId: document.querySelector('input[name="nationalId"]').value,
-            governorate: document.querySelector('input[name="governorate"]').value,
-            education: document.querySelector('input[name="education"]:checked')?.value || '',
-            specialization: document.querySelector('input[name="specialization"]').value,
-            license: document.querySelector('input[name="license"]:checked')?.value || 'لا يوجد',
-            otherJob: document.querySelector('input[name="otherJob"]:checked')?.value || '',
-            currentWorkDesc: document.querySelector('input[name="currentWorkDesc"]').value,
-            readyToJoin: document.querySelector('input[name="readyToJoin"]:checked')?.value || '',
-            expectedDate: document.querySelector('input[name="expectedDate"]').value,
-            prevJob: document.querySelector('input[name="prevJob"]').value,
-            targetJob: document.querySelector('input[name="targetJob"]').value,
-            phone: document.querySelector('input[name="phone"]').value,
-            email: document.querySelector('input[name="email"]').value,
-            timestamp: new Date().toLocaleString('ar-SA')
-        };
-
-        // حفظ البيانات في ذاكرة المتصفح المحلية (LocalStorage)
-        let submissions = JSON.parse(localStorage.getItem('jobApplications') || '[]');
-        submissions.push(formData);
-        localStorage.setItem('jobApplications', JSON.stringify(submissions));
-
-        // إخفاء النموذج وإظهار رسالة النجاح
-        this.style.display = 'none';
-        document.getElementById('successMessage').style.display = 'block';
-    });
-</script>
 
 </body>
 </html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب توظيف مشفى أريحا المركزي</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 680px;
+        }
+        .form-header {
+            background-color: #ffffff;
+            border-top: 8px solid #673ab7;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .form-header h1 {
+            margin: 0 0 10px 0;
+            color: #1f1f1f;
+            font-size: 24px;
+        }
+        .form-header p {
+            margin: 0;
+            color: #5f6368;
+            font-size: 14px;
+        }
+        .required-note {
+            color: #d93025;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+        .question-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid #dadce0;
+        }
+        .question-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #202124;
+            margin-bottom: 12px;
+        }
+        .question-title span {
+            color: #d93025;
+            margin-right: 4px;
+        }
+        input[type="text"], input[type="email"], input[type="date"], textarea, select {
+            width: 100%;
+            padding: 8px 0;
+            border: none;
+            border-bottom: 1px solid #dadce0;
+            background: transparent;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, textarea:focus {
+            border-bottom: 2px solid #673ab7;
+        }
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #3c4043;
+            cursor: pointer;
+        }
+        .footer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .btn-submit {
+            background-color: #673ab7;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-submit:hover {
+            background-color: #5e35b1;
+        }
+        .success-msg {
+            display: none;
+            background-color: #e6f4ea;
+            color: #137333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <form id="jobApplicationForm">
+        <!-- رأس الاستبيان -->
+        <div class="form-header">
+            <h1>طلب توظيف مشفى أريحا المركزي</h1>
+            <p>يرجى تعبئة كافة الحقول المطلوبة بدقة.</p>
+            <div class="required-note">* تشير إلى أن السؤال مطلوب</div>
+        </div>
+
+        <!-- 1. الاسم الثلاثي -->
+        <div class="question-card">
+            <div class="question-title">الاسم الثلاثي <span>*</span></div>
+            <input type="text" name="fullName" required placeholder="إجابتك">
+        </div>
+
+        <!-- 2. اسم الأم -->
+        <div class="question-card">
+            <div class="question-title">اسم الأم <span>*</span></div>
+            <input type="text" name="motherName" required placeholder="إجابتك">
+        </div>
+
+        <!-- 3. مكان الولادة -->
+        <div class="question-card">
+            <div class="question-title">مكان الولادة ( اسم القرية أو البلدة أو المدينة ) <span>*</span></div>
+            <input type="text" name="birthPlace" required placeholder="إجابتك">
+        </div>
+
+        <!-- 4. تاريخ الولادة -->
+        <div class="question-card">
+            <div class="question-title">تاريخ الولادة <span>*</span></div>
+            <input type="date" name="birthDate" required>
+        </div>
+
+        <!-- 5. الرقم الوطني -->
+        <div class="question-card">
+            <div class="question-title">الرقم الوطني <span>*</span></div>
+            <input type="text" name="nationalId" required placeholder="إجابتك">
+        </div>
+
+        <!-- 6. اسم محافظتي -->
+        <div class="question-card">
+            <div class="question-title">اسم محافظتي <span>*</span></div>
+            <input type="text" name="governorate" required placeholder="إجابتك">
+        </div>
+
+        <!-- 7. المؤهل العلمي -->
+        <div class="question-card">
+            <div class="question-title">المؤهل العلمي <span>*</span></div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="education" value="دكتوراه" required> دكتوراه</label>
+                <label class="radio-option"><input type="radio" name="education" value="ماجستير"> ماجستير</label>
+                <label class="radio-option"><input type="radio" name="education" value="جامعة"> جامعة</label>
+                <label class="radio-option"><input type="radio" name="education" value="معهد"> معهد</label>
+                <label class="radio-option"><input type="radio" name="education" value="مدرسة تمريض"> مدرسة تمريض</label>
+                <label class="radio-option"><input type="radio" name="education" value="ثالث ثانوي"> ثالث ثانوي</label>
+                <label class="radio-option"><input type="radio" name="education" value="دبلوم / أخرى"> دبلوم / أخرى</label>
+            </div>
+        </div>
+
+        <!-- 8. الاختصاص -->
+        <div class="question-card">
+            <div class="question-title">الاختصاص ( في حال ليس هنا إختصاص اكتب لا يوجد ) <span>*</span></div>
+            <input type="text" name="specialization" required placeholder="إجابتك">
+        </div>
+
+        <!-- 9. سؤال للأطباء فقط -->
+        <div class="question-card">
+            <div class="question-title">سؤال للأطباء فقط هل لديك رخصة مزاولة؟</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="license" value="نعم"> نعم</label>
+                <label class="radio-option"><input type="radio" name="license" value="لا"> لا</label>
+            </div>
+        </div>
+
+        <!-- 10. هل انت مرتبط بعمل آخر -->
+        <div class="question-card">
+            <div class="question-title">هل انت مرتبط بعمل اخر <span>*</span></div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="otherJob" value="نعم" required> نعم</label>
+                <label class="radio-option"><input type="radio" name="otherJob" value="لا"> لا</label>
+            </div>
+        </div>
+
+        <!-- 11. اذكر العمل -->
+        <div class="question-card">
+            <div class="question-title">اذكر العمل <span>*</span></div>
+            <input type="text" name="currentWorkDesc" required placeholder="إجابتك">
+        </div>
+
+        <!-- 12. هل انت مستعد للإلتحاق معنا -->
+        <div class="question-card">
+            <div class="question-title">هل انت مستعد للإلتحاق معنا <span>*</span></div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="readyToJoin" value="نعم" required> نعم</label>
+                <label class="radio-option"><input type="radio" name="readyToJoin" value="لا"> لا</label>
+            </div>
+        </div>
+
+        <!-- 13. التاريخ المتوقع للإلتحاق معنا -->
+        <div class="question-card">
+            <div class="question-title">التاريخ المتوقع للإلتحاق معنا <span>*</span></div>
+            <input type="date" name="expectedDate" required>
+        </div>
+
+        <!-- 14. التوصيف الوظيفي السابق -->
+        <div class="question-card">
+            <div class="question-title">التوصيف الوظيفي السابق ( في حال كان غير موجود اكتب لا يوجد ) <span>*</span></div>
+            <input type="text" name="prevJob" required placeholder="إجابتك">
+        </div>
+
+        <!-- 15. التوصيف الوظيفي المرشح اليه للعمل معنا -->
+        <div class="question-card">
+            <div class="question-title">التوصيف الوظيفي المرشح اليه للعمل معنا <span>*</span></div>
+            <input type="text" name="targetJob" required placeholder="إجابتك">
+        </div>
+
+        <!-- 16. رقم الهاتف -->
+        <div class="question-card">
+            <div class="question-title">رقم الهاتف <span>*</span></div>
+            <input type="text" name="phone" required placeholder="إجابتك">
+        </div>
+
+        <!-- 17. البريد الإلكتروني -->
+        <div class="question-card">
+            <div class="question-title">البريد الإلكتروني <span>*</span></div>
+            <input type="email" name="email" required placeholder="إجابتك">
+        </div>
+
+        <!-- زر الإرسال -->
+        <div class="footer-actions">
+            <button type="submit" class="btn-submit">إرسال</button>
+            <button type="reset" style="background:none; border:none; color:#5f6368; cursor:pointer; font-weight:600;">محو النموذج</button>
+        </div>
+    </form>
+
+    <div id="successMessage" class="success-msg">
+        تم إرسال طلبك بنجاح وحفظه على الجهاز! شكراً لتعبئة الاستمارة.
+    </div>
+</div>
+
+<script>
+    document.getElementById('jobApplicationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // جمع كافة البيانات المدخلة
+        const formData = {
+            fullName: document.querySelector('input[name="fullName"]').value,
+            motherName: document.querySelector('input[name="motherName"]').value,
+            birthPlace: document.querySelector('input[name="birthPlace"]').value,
+            birthDate: document.querySelector('input[name="birthDate"]').value,
+            nationalId: document.querySelector('input[name="nationalId"]').value,
+            governorate: document.querySelector('input[name="governorate"]').value,
+            education: document.querySelector('input[name="education"]:checked')?.value || '',
+            specialization: document.querySelector('input[name="specialization"]').value,
+            license: document.querySelector('input[name="license"]:checked')?.value || 'لا يوجد',
+            otherJob: document.querySelector('input[name="otherJob"]:checked')?.value || '',
+            currentWorkDesc: document.querySelector('input[name="currentWorkDesc"]').value,
+            readyToJoin: document.querySelector('input[name="readyToJoin"]:checked')?.value || '',
+            expectedDate: document.querySelector('input[name="expectedDate"]').value,
+            prevJob: document.querySelector('input[name="prevJob"]').value,
+            targetJob: document.querySelector('input[name="targetJob"]').value,
+            phone: document.querySelector('input[name="phone"]').value,
+            email: document.querySelector('input[name="email"]').value,
+            timestamp: new Date().toLocaleString('ar-SA')
+        };
+
+        // حفظ البيانات في ذاكرة المتصفح المحلية (LocalStorage)
+        let submissions = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+        submissions.push(formData);
+        localStorage.setItem('jobApplications', JSON.stringify(submissions));
+
+        // إخفاء النموذج وإظهار رسالة النجاح
+        this.style.display = 'none';
+        document.getElementById('successMessage').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

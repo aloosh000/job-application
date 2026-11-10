@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0284c7;
-            --primary-hover: #0369a1;
+            --primary: #25d366;
+            --primary-hover: #128c7e;
             --bg-color: #f1f5f9;
             --card-bg: #ffffff;
             --text-main: #0f172a;
@@ -28,10 +28,11 @@
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-weight: 700; font-size: 0.95rem; }
         .input-control { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; outline: none; }
-        .input-control:focus { border-color: var(--primary); }
+        .input-control:focus { border-color: #0284c7; }
         .radio-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .radio-card { border: 1.5px solid var(--border-color); border-radius: 10px; padding: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
-        .btn-submit { width: 100%; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: white; border: none; padding: 16px; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; }
+        .btn-submit { width: 100%; background: #25d366; color: white; border: none; padding: 16px; border-radius: 10px; font-size: 1.05rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background 0.2s; }
+        .btn-submit:hover { background: #128c7e; }
     </style>
 </head>
 <body>
@@ -44,28 +45,26 @@
         </div>
 
         <div class="card-body">
-            <!-- تم توجيه Form مباشرة لـ Google Form عبر Target iframe مخفي -->
-            <form id="googleForm" action="https://docs.google.com/forms/d/e/1FAIpQLScCVoEfkEJ5renHnCwsCQd52JIHU_fZSzcWo5A1UjPepCGriQ/formsponse?usp=pp_url&entry.1723342991=%D8%A7%D9%84%D8%AE%D9%8A%D8%A7%D8%B1+%D8%B1%D9%82%D9%85+1" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+            <form id="whatsappForm" class="form-grid" onsubmit="sendToWhatsApp(event)">
 
                 <div class="form-group">
-                    <label>الاسم الثلاثي *</label>
-                    <!-- استبدل entry.123456 بالرقم الخص بك من جوجل -->
-                    <input type="text" name="entry.123456" class="input-control" required placeholder="أدخل اسمك الثلاثي">
+                    <label for="fullName">الاسم الثلاثي *</label>
+                    <input type="text" id="fullName" class="input-control" required placeholder="أدخل اسمك الثلاثي">
                 </div>
 
                 <div class="form-group">
-                    <label>مكان الإقامة الحالي *</label>
-                    <input type="text" name="entry.234567" class="input-control" required placeholder="مثال: المعرة">
+                    <label for="address">مكان الإقامة الحالي *</label>
+                    <input type="text" id="address" class="input-control" required placeholder="مثال: المعرة">
                 </div>
 
                 <div class="form-group">
-                    <label>رقم الهاتف *</label>
-                    <input type="tel" name="entry.345678" class="input-control" required placeholder="05XXXXXXXX" dir="ltr" style="text-align: right;">
+                    <label for="phone">رقم الهاتف *</label>
+                    <input type="tel" id="phone" class="input-control" required placeholder="05XXXXXXXX" dir="ltr" style="text-align: right;">
                 </div>
 
                 <div class="form-group">
-                    <label>إثبات الشخصية *</label>
-                    <select name="entry.456789" class="input-control" required>
+                    <label for="idType">إثبات الشخصية *</label>
+                    <select id="idType" class="input-control" required>
                         <option value="" disabled selected>اختر نوع الإثبات</option>
                         <option value="هوية شخصية">هوية شخصية</option>
                         <option value="جواز سفر">جواز سفر</option>
@@ -75,8 +74,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>المؤهل العلمي *</label>
-                    <select name="entry.567890" class="input-control" required>
+                    <label for="qualification">المؤهل العلمي *</label>
+                    <select id="qualification" class="input-control" required>
                         <option value="" disabled selected>اختر المؤهل العلمي</option>
                         <option value="مدرسة تمريض">مدرسة تمريض</option>
                         <option value="كلية تمريض">كلية تمريض</option>
@@ -86,8 +85,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>الاختصاص *</label>
-                    <select name="entry.678901" class="input-control" required>
+                    <label for="specialty">الاختصاص *</label>
+                    <select id="specialty" class="input-control" required>
                         <option value="" disabled selected>اختر الاختصاص</option>
                         <option value="فني كلية">فني كلية</option>
                         <option value="تمريض">تمريض</option>
@@ -98,22 +97,51 @@
                     <label>هل لديك عقد حالياً؟ *</label>
                     <div class="radio-wrapper">
                         <label class="radio-card">
-                            <input type="radio" name="entry.789012" value="نعم" required> نعم
+                            <input type="radio" name="hasContract" value="نعم" required> نعم
                         </label>
                         <label class="radio-card">
-                            <input type="radio" name="entry.789012" value="لا" required> لا
+                            <input type="radio" name="hasContract" value="لا" required> لا
                         </label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit">إرسال الطلب</button>
+                <button type="submit" class="btn-submit">
+                    إرسال الطلب عبر واتساب 💬
+                </button>
+
             </form>
         </div>
     </div>
 
-    <!-- Iframe مخفي يستقبل الإجابة بدون مغادرة موقعك -->
-    <script type="text/javascript">var submitted=false;</script>
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {alert('تم إرسال طلبك بنجاح!'); window.location.reload();}"></iframe>
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
 
+            const fullName = document.getElementById('fullName').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const idType = document.getElementById('idType').value;
+            const qualification = document.getElementById('qualification').value;
+            const specialty = document.getElementById('specialty').value;
+            const hasContract = document.querySelector('input[name="hasContract"]:checked').value;
+
+            // رقم الواتساب الذي ستصل إليه الطلبات
+            const targetNumber = "963945262896";
+
+            const message = `📋 *طلب توظيف جديد - مركز غسيل المعرة*\n\n` +
+                            `👤 *الاسم:* ${fullName}\n` +
+                            `📍 *الإقامة:* ${address}\n` +
+                            `📱 *الهاتف:* ${phone}\n` +
+                            `🪪 *الإثبات:* ${idType}\n` +
+                            `🎓 *المؤهل:* ${qualification}\n` +
+                            `🩺 *الاختصاص:* ${specialty}\n` +
+                            `📄 *هل لديك عقد:* ${hasContract}`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${targetNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>

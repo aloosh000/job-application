@@ -3,252 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>طلب توظيف مشفى أريحا المركزي</title>
+    <title>طلب توظيف - مركز غسيل المعرة</title>
+    <!-- استدعاء خط Tajawal من Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f9;
+        :root {
+            --primary: #0284c7;
+            --primary-hover: #0369a1;
+            --accent: #0f766e;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --focus-ring: rgba(2, 132, 199, 0.25);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-main);
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
         }
-        .form-container {
+
+        .card {
             width: 100%;
-            max-width: 680px;
+            max-width: 600px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
         }
-        .form-header {
+
+        .card-header {
+            background: linear-gradient(135deg, #0284c7 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 36px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .card-header h1 {
+            font-size: 1.65rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .card-header p {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin-bottom: 16px;
+        }
+
+        .inquiry-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             background-color: #ffffff;
-            border-top: 8px solid #673ab7;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            direction: ltr;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
-        .form-header h1 {
-            margin: 0 0 10px 0;
-            color: #1f1f1f;
-            font-size: 24px;
+
+        .inquiry-box span {
+            color: var(--primary);
         }
-        .form-header p {
-            margin: 0;
-            color: #5f6368;
-            font-size: 14px;
+
+        .card-body {
+            padding: 32px 24px;
         }
-        .required-note {
-            color: #d93025;
-            font-size: 12px;
-            margin-top: 8px;
-        }
-        .question-card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border: 1px solid #dadce0;
-        }
-        .question-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #202124;
-            margin-bottom: 12px;
-        }
-        .question-title span {
-            color: #d93025;
-            margin-right: 4px;
-        }
-        input[type="text"], input[type="email"], input[type="date"], textarea, select {
-            width: 100%;
-            padding: 8px 0;
-            border: none;
-            border-bottom: 1px solid #dadce0;
-            background: transparent;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s;
-            box-sizing: border-box;
-        }
-        input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, textarea:focus {
-            border-bottom: 2px solid #673ab7;
-        }
-        .radio-group {
+
+        .form-grid {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 8px;
+            gap: 20px;
         }
-        .radio-option {
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #fff;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+
+        .input-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--focus-ring);
+        }
+
+        select.input-control {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2064748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: left 14px center;
+            background-size: 16px;
+        }
+
+        .radio-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .radio-card {
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 14px;
-            color: #3c4043;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .radio-card:hover {
+            border-color: var(--primary);
+            background-color: #f8fafc;
+        }
+
+        .radio-card input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
             cursor: pointer;
         }
-        .footer-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #ffffff;
-            padding: 16px 24px;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+        .radio-card has(:checked) {
+            border-color: var(--primary);
+            background-color: rgba(2, 132, 199, 0.05);
         }
+
         .btn-submit {
-            background-color: #673ab7;
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             color: white;
             border: none;
-            border-radius: 4px;
-            padding: 10px 24px;
-            font-size: 14px;
-            font-weight: 600;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+            margin-top: 10px;
         }
+
         .btn-submit:hover {
-            background-color: #5e35b1;
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 480px) {
+            .card-header h1 {
+                font-size: 1.4rem;
+            }
+            .card-body {
+                padding: 24px 16px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="form-container">
-    <!-- تم إضافة action الخاص بـ Formspree و method="POST" -->
-    <form id="jobApplicationForm" action="https://formspree.io/f/mljjqrnj" method="POST">
-        <!-- رأس الاستبيان -->
-        <div class="form-header">
-            <h1>طلب توظيف مشفى أريحا المركزي</h1>
-            <p>يرجى تعبئة كافة الحقول المطلوبة بدقة.</p>
-            <div class="required-note">* تشير إلى أن السؤال مطلوب</div>
-        </div>
-
-        <!-- 1. الاسم الثلاثي -->
-        <div class="question-card">
-            <div class="question-title">الاسم الثلاثي <span>*</span></div>
-            <input type="text" name="الاسم الثلاثي" required placeholder="إجابتك">
-        </div>
-
-        <!-- 2. اسم الأم -->
-        <div class="question-card">
-            <div class="question-title">اسم الأم <span>*</span></div>
-            <input type="text" name="اسم الأم" required placeholder="إجابتك">
-        </div>
-
-        <!-- 3. مكان الولادة -->
-        <div class="question-card">
-            <div class="question-title">مكان الولادة ( اسم القرية أو البلدة أو المدينة ) <span>*</span></div>
-            <input type="text" name="مكان الولادة" required placeholder="إجابتك">
-        </div>
-
-        <!-- 4. تاريخ الولادة -->
-        <div class="question-card">
-            <div class="question-title">تاريخ الولادة <span>*</span></div>
-            <input type="date" name="تاريخ الولادة" required>
-        </div>
-
-        <!-- 5. الرقم الوطني -->
-        <div class="question-card">
-            <div class="question-title">الرقم الوطني <span>*</span></div>
-            <input type="text" name="الرقم الوطني" required placeholder="إجابتك">
-        </div>
-
-        <!-- 6. اسم محافظتي -->
-        <div class="question-card">
-            <div class="question-title">اسم محافظتي <span>*</span></div>
-            <input type="text" name="المحافظة" required placeholder="إجابتك">
-        </div>
-
-        <!-- 7. المؤهل العلمي -->
-        <div class="question-card">
-            <div class="question-title">المؤهل العلمي <span>*</span></div>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="دكتوراه" required> دكتوراه</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="ماجستير"> ماجستير</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="جامعة"> جامعة</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="معهد"> معهد</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="مدرسة تمريض"> مدرسة تمريض</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="ثالث ثانوي"> ثالث ثانوي</label>
-                <label class="radio-option"><input type="radio" name="المؤهل العلمي" value="دبلوم / أخرى"> دبلوم / أخرى</label>
+    <div class="card">
+        <!-- الهيدر الاحترافي -->
+        <div class="card-header">
+            <span class="badge">فرصة عمل</span>
+            <h1>مركز غسيل المعرة</h1>
+            <p>طلب استثمار شواغر: فني كلية / ممرض</p>
+            <div class="inquiry-box">
+                <span>للاستفسار:</span> +46790436692
             </div>
         </div>
 
-        <!-- 8. الاختصاص -->
-        <div class="question-card">
-            <div class="question-title">الاختصاص ( في حال ليس هنا إختصاص اكتب لا يوجد ) <span>*</span></div>
-            <input type="text" name="الاختصاص" required placeholder="إجابتك">
-        </div>
+        <!-- جسم الاستمارة مع رابط Formspree الخاص بك مباشرة -->
+        <div class="card-body">
+            <form action="https://formspree.io/f/mljjqrnj" method="POST" class="form-grid">
 
-        <!-- 9. سؤال للأطباء فقط -->
-        <div class="question-card">
-            <div class="question-title">سؤال للأطباء فقط هل لديك رخصة مزاولة؟</div>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="رخصة المزاولة" value="نعم"> نعم</label>
-                <label class="radio-option"><input type="radio" name="رخصة المزاولة" value="لا"> لا</label>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="fullName">الاسم الثلاثي *</label>
+                    <input type="text" id="fullName" name="الاسم الثلاثي" class="input-control" required placeholder="أدخل اسمك الثلاثي">
+                </div>
 
-        <!-- 10. هل انت مرتبط بعمل آخر -->
-        <div class="question-card">
-            <div class="question-title">هل انت مرتبط بعمل اخر <span>*</span></div>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="مرتبط بعمل آخر" value="نعم" required> نعم</label>
-                <label class="radio-option"><input type="radio" name="مرتبط بعمل آخر" value="لا"> لا</label>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="address">مكان الإقامة الحالي *</label>
+                    <input type="text" id="address" name="مكان الإقامة الحالي" class="input-control" required placeholder="مثال: المعرة، إدلب...">
+                </div>
 
-        <!-- 11. اذكر العمل -->
-        <div class="question-card">
-            <div class="question-title">اذكر العمل <span>*</span></div>
-            <input type="text" name="تفاصيل العمل الحالي" required placeholder="إجابتك">
-        </div>
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف *</label>
+                    <input type="tel" id="phone" name="رقم الهاتف" class="input-control" required placeholder="05XXXXXXXX" dir="ltr" style="text-align: right;">
+                </div>
 
-        <!-- 12. هل انت مستعد للإلتحاق معنا -->
-        <div class="question-card">
-            <div class="question-title">هل انت مستعد للإلتحاق معنا <span>*</span></div>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="مستعد للإلتحاق" value="نعم" required> نعم</label>
-                <label class="radio-option"><input type="radio" name="مستعد للإلتحاق" value="لا"> لا</label>
-            </div>
-        </div>
+                <div class="form-group">
+                    <label for="idType">إثبات الشخصية *</label>
+                    <select id="idType" name="نوع إثبات الشخصية" class="input-control" required>
+                        <option value="" disabled selected>اختر نوع الإثبات المتاح لديك</option>
+                        <option value="هوية شخصية">هوية شخصية</option>
+                        <option value="جواز سفر">جواز سفر</option>
+                        <option value="إخراج قيد">إخراج قيد</option>
+                        <option value="دفتر عائلة">دفتر عائلة</option>
+                    </select>
+                </div>
 
-        <!-- 13. التاريخ المتوقع للإلتحاق معنا -->
-        <div class="question-card">
-            <div class="question-title">التاريخ المتوقع للإلتحاق معنا <span>*</span></div>
-            <input type="date" name="تاريخ الإلتحاق المتوقع" required>
-        </div>
+                <div class="form-group">
+                    <label for="qualification">المؤهل العلمي *</label>
+                    <select id="qualification" name="المؤهل العلمي" class="input-control" required>
+                        <option value="" disabled selected>اختر المؤهل العلمي</option>
+                        <option value="مدرسة تمريض">مدرسة تمريض</option>
+                        <option value="كلية تمريض">كلية تمريض</option>
+                        <option value="طوارئ">طوارئ</option>
+                        <option value="تخدير">تخدير</option>
+                    </select>
+                </div>
 
-        <!-- 14. التوصيف الوظيفي السابق -->
-        <div class="question-card">
-            <div class="question-title">التوصيف الوظيفي السابق ( في حال كان غير موجود اكتب لا يوجد ) <span>*</span></div>
-            <input type="text" name="التوصيف الوظيفي السابق" required placeholder="إجابتك">
-        </div>
+                <div class="form-group">
+                    <label for="specialty">الاختصاص *</label>
+                    <select id="specialty" name="الاختصاص" class="input-control" required>
+                        <option value="" disabled selected>اختر الاختصاص الدقيق</option>
+                        <option value="فني كلية">فني كلية</option>
+                        <option value="تمريض">تمريض</option>
+                    </select>
+                </div>
 
-        <!-- 15. التوصيف الوظيفي المرشح اليه للعمل معنا -->
-        <div class="question-card">
-            <div class="question-title">التوصيف الوظيفي المرشح اليه للعمل معنا <span>*</span></div>
-            <input type="text" name="التوصيف الوظيفي المرشح له" required placeholder="إجابتك">
-        </div>
+                <div class="form-group">
+                    <label>هل لديك عقد حالياً؟ *</label>
+                    <div class="radio-wrapper">
+                        <label class="radio-card">
+                            <input type="radio" name="هل لديك عقد" value="نعم" required>
+                            <span>نعم</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="هل لديك عقد" value="لا" required>
+                            <span>لا</span>
+                        </label>
+                    </div>
+                </div>
 
-        <!-- 16. رقم الهاتف -->
-        <div class="question-card">
-            <div class="question-title">رقم الهاتف <span>*</span></div>
-            <input type="text" name="رقم الهاتف" required placeholder="إجابتك">
-        </div>
+                <button type="submit" class="btn-submit">إرسال الطلب الآن</button>
 
-        <!-- 17. البريد الإلكتروني -->
-        <div class="question-card">
-            <div class="question-title">البريد الإلكتروني <span>*</span></div>
-            <input type="email" name="_replyto" required placeholder="إجابتك">
+            </form>
         </div>
-
-        <!-- زر الإرسال -->
-        <div class="footer-actions">
-            <button type="submit" class="btn-submit">إرسال</button>
-            <button type="reset" style="background:none; border:none; color:#5f6368; cursor:pointer; font-weight:600;">محو النموذج</button>
-        </div>
-    </form>
-</div>
+    </div>
 
 </body>
 </html>
